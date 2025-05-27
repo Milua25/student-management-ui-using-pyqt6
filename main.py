@@ -53,6 +53,18 @@ class InsertDialog(QDialog):
         window.load_data()
 
 
+class AboutDialog(QMessageBox):
+
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Insert Student Data")
+        content = """
+        This is the About Dialog for this app.
+        """
+        self.setText(content)
+
+
+
 class SearchDialog(QDialog):
     def __init__(self):
         super().__init__()
@@ -193,6 +205,7 @@ class MainWindow(QMainWindow):
         about_action = QAction("About", self)
         help_menu_item.addAction(about_action)
         about_action.setMenuRole(QAction.MenuRole.NoRole)
+        about_action.triggered.connect(self.about)
 
         # Search Menu
         search_action = QAction(QIcon("icons/search.png"),"Search", self)
@@ -268,6 +281,9 @@ class MainWindow(QMainWindow):
         dialog = DeleteDialog()
         dialog.exec()
 
+    def about(self):
+        dialog = AboutDialog()
+        dialog.exec()
 
 
 app = QApplication(sys.argv)
