@@ -1,0 +1,1 @@
+# student-management-ui-using-pyqt6
